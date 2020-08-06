@@ -37,20 +37,17 @@ app.post("/api/workouts", ({ body }, res) => {
 
 // Add to a workout
 app.put("/update/:id", (req, res) => {
-  db.notes.update(
-    {
-      _id: mongojs.ObjectId(req.params.id)
-    },
-    {
-      $push: {
+  workOuts.findByIdAndUpdate(
+    req.params.id, {
+    $push: {
         exercise: {
-          type: req.body.type,
-          name: req.body.name,
-          duration: req.body.duration,
-          weight: req.body.weight,
-          reps: req.body.reps,
-          sets: req.body.sets,
-          distance: req.body.distance
+            type: req.body.type,
+            name: req.body.name,
+            weight: req.body.weight,
+            sets: req.body.sets,
+            reps: req.body.reps,
+            duration: req.body.duration,
+            distance: req.body.distance
         }
       }
     },
