@@ -35,7 +35,34 @@ app.post("/api/workouts", ({ body }, res) => {
     });
 });
 
-// Edit a workout
+// Add to a workout
+app.put("/update/:id", (req, res) => {
+  db.notes.update(
+    {
+      _id: mongojs.ObjectId(req.params.id)
+    },
+    {
+      $push: {
+        exercise: {
+          type: req.body.type,
+          name: req.body.name,
+          duration: req.body.duration,
+          weight: req.body.weight,
+          reps: req.body.reps,
+          sets: req.body.sets,
+          distance: req.body.distance
+        }
+      }
+    },
+    (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.send(data);
+      }
+    }
+  );
+});
 
 // Range get
 
