@@ -23,6 +23,21 @@ app.get("/api/workouts", (req,res) => {
   })
 });
 
+// Create new workout
+router.post("/api/workouts", ({ body }, res) => {
+  workOuts.insertMany(body)
+    .then(dbworkouts => {
+      res.json(dbworkouts);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
+
+// Edit a workout
+
+// Range get
+
 app.listen(PORT, () => {
   console.log(`App running port ${PORT}`);
 });
