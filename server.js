@@ -24,7 +24,7 @@ app.get("/api/workouts", (req,res) => {
 });
 
 // Create new workout
-router.post("/api/workouts", ({ body }, res) => {
+app.post("/api/workouts", ({ body }, res) => {
   workOuts.insertMany(body)
     .then(dbworkouts => {
       res.json(dbworkouts);
