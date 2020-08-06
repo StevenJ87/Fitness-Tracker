@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const workOuts = require("./models/workOuts.js");
+const path = require("path");
 
 const PORT = process.env.PORT || 3000;
 
@@ -37,6 +38,11 @@ app.post("/api/workouts", ({ body }, res) => {
 // Edit a workout
 
 // Range get
+
+// Exercise page
+app.get("/exercise", (req,res) => {
+  res.sendFile(path.join(__dirname, "./public/exercise.html"))
+  });
 
 app.listen(PORT, () => {
   console.log(`App running port ${PORT}`);
