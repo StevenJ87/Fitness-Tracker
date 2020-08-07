@@ -41,15 +41,15 @@ app.put("/api/workouts/:id", (req, res) => {
   workOuts.findByIdAndUpdate(
     req.params.id, {
     $push: {
-        exercise: {
-            type: req.body.type,
-            name: req.body.name,
-            weight: req.body.weight,
-            sets: req.body.sets,
-            reps: req.body.reps,
-            duration: req.body.duration,
-            distance: req.body.distance
-        }
+         exercises: {
+                type: req.body.type,
+                name: req.body.name,
+                weight: req.body.weight,
+                sets: req.body.sets,
+                reps: req.body.reps,
+                duration: req.body.duration,
+                distance: req.body.distance
+            }
       }
     },
     (error, data) => {
