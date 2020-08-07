@@ -62,9 +62,20 @@ app.put("/api/workouts/:id", (req, res) => {
   );
 });
 
-// Range get
+// Workout Dashboard stats
+app.get("/api/workouts/range", (req,res) => {
+  workOuts.find({})
+  .then(dbworkouts => {
+    res.json(dbworkouts);
+  })
+});
 
-// Exercise page
+// Stats HTML API
+app.get("/stats", (req,res) => {
+  res.sendFile(path.join(__dirname, "./public/stats.html"))
+  });
+
+// Exercise HTML API
 app.get("/exercise", (req,res) => {
   res.sendFile(path.join(__dirname, "./public/exercise.html"))
   });
