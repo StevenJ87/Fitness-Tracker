@@ -31,9 +31,15 @@ const workoutsSchema = new Schema({
         type: Number
       }
     }
-  ]
+  ],
+  totalDuration: Number
 });
 
 const workOut = mongoose.model("Transaction", workoutsSchema);
+
+workoutsSchema.methods.totalTime = function () {
+    this.totalDuration = this.totalDuration + `${this.duration}`
+    return this.totalDuration;
+    };
 
 module.exports = workOut;
