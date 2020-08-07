@@ -35,9 +35,16 @@ const workoutsSchema = new Schema({
   totalDuration: Number
 });
 
+let totalTime = 0;
+
 workoutsSchema.methods.totalTime = function () {
-    this.totalDuration = 20; //this.totalDuration + `${this.duration}`
-    return this.totalDuration;
+  console.log("hello");
+    this.exercises.map(workout => {
+      
+      totalTime = totalTime + workout.duration;
+    });
+    this.totalDuration = totalTime;
+    return this.totalDuration
     };
 
 const workOut = mongoose.model("Workouts", workoutsSchema);
