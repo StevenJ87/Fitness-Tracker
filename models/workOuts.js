@@ -38,6 +38,7 @@ const workoutsSchema = new Schema({
 const workOut = mongoose.model("Transaction", workoutsSchema);
 
 workoutsSchema.methods.totalTime = function () {
+  console.log("hello");
     this.totalDuration = this.totalDuration + `${this.duration}`
     return this.totalDuration;
     };

@@ -22,11 +22,15 @@ app.get("/api/workouts", (req,res) => {
   .then(dbworkouts => {
     res.json(dbworkouts);
   })
+  .catch(err => {
+    res.status(400).json(err);
+  });
 });
 
 // Create new workout
 app.post("/api/workouts", ({ body }, res) => {
   const workOut = new workOuts(body);
+  //workOut.totalTime();
   workOuts.create(workOut)
     .then(dbworkouts => {
       res.json(dbworkouts);
@@ -68,6 +72,9 @@ app.get("/api/workouts/range", (req,res) => {
   .then(dbworkouts => {
     res.json(dbworkouts);
   })
+  .catch(err => {
+    res.status(400).json(err);
+  });
 });
 
 // Stats HTML API
