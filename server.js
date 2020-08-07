@@ -26,7 +26,8 @@ app.get("/api/workouts", (req,res) => {
 
 // Create new workout
 app.post("/api/workouts", ({ body }, res) => {
-  workOuts.insertMany(body)
+  const workOut = new workOuts(body);
+  workOuts.create(workOut)
     .then(dbworkouts => {
       res.json(dbworkouts);
     })
@@ -36,7 +37,7 @@ app.post("/api/workouts", ({ body }, res) => {
 });
 
 // Add to a workout
-app.put("/update/:id", (req, res) => {
+app.put("/api/workouts/:id", (req, res) => {
   workOuts.findByIdAndUpdate(
     req.params.id, {
     $push: {
