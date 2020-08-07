@@ -30,7 +30,7 @@ app.get("/api/workouts", (req,res) => {
 // Create new workout
 app.post("/api/workouts", ({ body }, res) => {
   const workOut = new workOuts(body);
-  //workOut.totalTime();
+  workOut.totalTime();
   workOuts.create(workOut)
     .then(dbworkouts => {
       res.json(dbworkouts);
