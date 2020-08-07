@@ -35,13 +35,13 @@ const workoutsSchema = new Schema({
   totalDuration: Number
 });
 
-let totalTime = 0;
 
+// Figure out why total duration won't add up
 workoutsSchema.methods.totalTime = function () {
-  console.log("hello");
+  let totalTime = 0;
     this.exercises.map(workout => {
-      
       totalTime = totalTime + workout.duration;
+      console.log(totalTime);
     });
     this.totalDuration = totalTime;
     return this.totalDuration
